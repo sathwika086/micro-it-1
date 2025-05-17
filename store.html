@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORGANIC OASIS</title>
+    <style>
+        /* Styles for the website */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(169, 209, 232);
+        }
+
+        header {
+            background-color: rgb(49, 47, 47);
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        main {
+            padding: 1em;
+        }
+
+        #buttons {
+            text-align: center;
+            margin-bottom: 1em;
+        }
+
+        button {
+            background-color: indianred;
+            color: white;
+            border: none;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 0.5em;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #product-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1em;
+        }
+
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 1em;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .product img {
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        #cart {
+            margin-top: 1em;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1em;
+        }
+
+        #cart ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #total-price {
+            font-weight: bold;
+            margin-top: 1em;
+        }
+
+        #payment-details {
+            margin-top: 1em;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1em;
+        }
+
+        .payment-input {
+            width: 100%;
+            padding: 0.5em;
+            margin: 0.5em 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1em 0;
+            background-color: rgb(169, 169, 169);
+            color: black;
+            margin-top: 1em;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ORGANIC OASIS</h1>
+        <p>Your Online Vegetable and Fruit Market</p>
+    </header>
+
+    <main>
+        <div id="buttons">
+            <button onclick="showCategory('vegetables')">Vegetables</button>
+            <button onclick="showCategory('fruits')">Fruits</button>
+        </div>
+
+        <section id="product-list">
+            <!-- Products dynamically displayed here -->
+              <!-- Vegetables -->
+              <div class="product vegetables">
+                <img src="https://tse4.mm.bing.net/th?id=OIP.Jt6COT_y_Fb4JfFQNNWyfQHaGp&pid=Api&P=0&h=180" alt="Tomatoes">
+                <h3>Tomatoes</h3>
+                <p>Price: ₹20/kg</p>
+                <button onclick="addToCart('Tomatoes', 20)">Add to Cart</button>
+            </div>
+            <div class="product vegetables">
+                <img src="http://www.valleyspuds.com/wp-content/uploads/Russet-Potatoes-cut.jpg" alt="Potatoes">
+                <h3>Potatoes</h3>
+                <p>Price: ₹15/kg</p>
+                <button onclick="addToCart('Potatoes', 15)">Add to Cart</button>
+            </div>
+            <div class="product vegetables">
+                <img src="https://tse1.mm.bing.net/th?id=OIP.p1ypzNrrK0Xuh1fmQ7k8PgHaF-&pid=Api&P=0&h=180" alt="Onions">
+                <h3>Onions</h3>
+                <p>Price: ₹25/kg</p>
+                <button onclick="addToCart('Onions', 25)">Add to Cart</button>
+            </div>
+            <div class="product vegetables">
+                <img src="https://tse4.mm.bing.net/th?id=OIP.tk7a-a8Sy9xxx6YbejIYagHaHd&pid=Api&P=0&h=180" alt="Cabbage">
+                <h3>Cabbage</h3>
+                <p>Price: ₹30/piece</p>
+                <button onclick="addToCart('Cabbage', 30)">Add to Cart</button>
+            </div>
+            <div class="product vegetables">
+                <img src="https://purepng.com/public/uploads/large/purepng.com-carrotscarrotvegetablesfreshdeliciousefoodhealthycarrots-481521740717jmglq.png" alt="Carrots">
+                <h3>Carrots</h3>
+                <p>Price: ₹40/kg</p>
+                <button onclick="addToCart('Carrots', 40)">Add to Cart</button>
+            </div>
+            <div class="product vegetables">
+                <img src="https://lettuceinfo.org/wp-content/uploads/2020/09/Spinach.jpg" alt="Spinach">
+                <h3>Spinach</h3>
+                <p>Price: ₹15/bundle</p>
+                <button onclick="addToCart('Spinach', 15)">Add to Cart</button>
+            </div>
+              <div class="product vegetables">
+                <img src="https://www.health.harvard.edu/media/content/images/p7_Broccoli_HH1812_gi905351392.jpg" alt="Broccoli">
+                <h3>Broccoli</h3>
+                <p>Price: ₹50/piece</p>
+                <button onclick="addToCart('Broccoli', 50)">Add to Cart</button>
+            </div>
+            <div class="product vegetables">
+                <img src="https://domf5oio6qrcr.cloudfront.net/medialibrary/5299/h1018g16207257715328.jpg" alt="Cauliflower">
+                <h3>Cauliflower</h3>
+                <p>Price: ₹45/piece</p>
+                <button onclick="addToCart('Cauliflower', 45)">Add to Cart</button>
+            </div>
+            <div class="product vegetables">
+                <img src="https://www.ou.org/life/files/Peas.jpg" alt="Peas">
+                <h3>Peas</h3>
+                <p>Price: ₹60/kg</p>
+                <button onclick="addToCart('Peas', 60)">Add to Cart</button>
+            </div>
+            <div class="product vegetables">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Capsicum_annuum_fruits_IMGP0044.jpg" alt="Capsicum">
+                <h3>Capsicum</h3>
+                <p>Price: ₹50/kg</p>
+                <button onclick="addToCart('Capsicum', 50)">Add to Cart</button>
+            </div>
+            <div class="product vegetables">
+                <img src="http://2.bp.blogspot.com/-RYIbGmjSBOA/T4JbY1bvJ2I/AAAAAAAAA0c/uc2fU30Kmus/s1600/greenbeans5.jpg" alt="Green Beans">
+                <h3>Green Beans</h3>
+                <p>Price: ₹45/kg</p>
+                <button onclick="addToCart('Green Beans', 45)">Add to Cart</button>
+            </div>
+            <div class="product vegetables">
+                <img src="https://www.gardeningknowhow.com/wp-content/uploads/2009/03/radish.jpg" alt="Radish">
+                <h3>Radish</h3>
+                <p>Price: ₹20/piece</p>
+                <button onclick="addToCart('Radish', 20)">Add to Cart</button>
+            </div>
+            
+             <!-- Fruits -->
+                        <div class="product fruits hidden">
+                            <img src="https://tse2.mm.bing.net/th?id=OIP.nKkm0wnm9J-Ko2rny3mAzAHaIo&pid=Api&P=0&h=180" alt="Apples">
+                            <h3>Apples</h3>
+                            <p>Price: ₹100/kg</p>
+                            <button onclick="addToCart('Apples', 100)">Add to Cart</button>
+                        </div>
+                        <div class="product fruits hidden">
+                            <img src="https://tse2.mm.bing.net/th?id=OIP.O8lKDwWSZP_Cfm8eeyw3wAHaFu&pid=Api&P=0&h=180" alt="Bananas">
+                            <h3>Bananas</h3>
+                            <p>Price: ₹40/dozen</p>
+                            <button onclick="addToCart('Bananas', 40)">Add to Cart</button>
+                        </div>
+                        <div class="product fruits hidden">
+                            <img src="https://tse2.mm.bing.net/th?id=OIP.CinMGnQyPZj-n8tPAoqBUwHaEw&pid=Api&P=0&h=180" alt="Oranges">
+                            <h3>Oranges</h3>
+                            <p>Price: ₹60/kg</p>
+                            <button onclick="addToCart('Oranges', 60)">Add to Cart</button>
+                        </div>
+                        <div class="product fruits hidden">
+                            <img src="https://www.waimeanurseries.co.nz/assets/Uploads/Grape-green-iStock-000014085833Medium.jpg" alt="Grapes">
+                            <h3>Grapes</h3>
+                            <p>Price: ₹90/kg</p>
+                            <button onclick="addToCart('Grapes', 90)">Add to Cart</button>
+                        </div>
+                        <div class="product fruits hidden">
+                            <img src="https://www.luluhypermarket.com/medias/363133-01.jpg-1200Wx1200H?context=bWFzdGVyfGltYWdlc3w0MDI2Mzd8aW1hZ2UvanBlZ3xoNDQvaDdhLzEwODkyNDgzNDkzOTE4LzM2MzEzMy0wMS5qcGdfMTIwMFd4MTIwMEh8ODgzNWY4Y2JmZjk0NjU4YjA5MmMyYTM1ODA1NDc4NmQzMmM1MjIzMDMzM2NlMzg5YjUyYWVmMWYzODg1ZjgyYw" alt="Mangoes">
+                            <h3>Mangoes</h3>
+                            <p>Price: ₹120/kg</p>
+                            <button onclick="addToCart('Mangoes', 120)">Add to Cart</button>
+                        </div>
+                        <div class="product fruits hidden">
+                            <img src="https://www.liveeatlearn.com/wp-content/uploads/2023/05/How-to-Cut-Pineapple-01.jpg" alt="Pineapple">
+                            <h3>Pineapple</h3>
+                            <p>Price: ₹70/piece</p>
+                            <button onclick="addToCart('Pineapple', 70)">Add to Cart</button>
+                        </div>
+                        <div class="product fruits hidden">
+                            <img src="https://cdn.shopify.com/s/files/1/3008/1030/articles/papaya_1200x1200_6d414b5a-f5fe-492e-aa73-5d6026356db4_1600x.jpg?v=1663102466" alt="Papaya">
+                            <h3>Papaya</h3>
+                            <p>Price: ₹80/piece</p>
+                             <button onclick="addToCart('Papaya', 80)">Add to Cart</button>
+                        </div>
+                        <div class="product fruits hidden">
+                            <img src="https://www.gardeningknowhow.com/wp-content/uploads/2017/10/guava-fruit.jpg" alt="Guava">
+                            <h3>Guava</h3>
+                            <p>Price: ₹40/kg</p>
+                            <button onclick="addToCart('Guava', 40)">Add to Cart</button>
+                        </div>
+                        <div class="product fruits hidden">
+                            <img src="https://www.harvst.co.uk/wp-content/uploads/2022/05/strawberries-scaled.jpeg" alt="Strawberries">
+                            <h3>Strawberries</h3>
+                            <p>Price: ₹150/kg</p>
+                            <button onclick="addToCart('Strawberries', 150)">Add to Cart</button>
+                        </div>
+                        <div class="product fruits hidden">
+                            <img src="http://upload.wikimedia.org/wikipedia/commons/b/b8/Kiwi_(Actinidia_chinensis)_1_Luc_Viatour.jpg" alt="Kiwi">
+                            <h3>Kiwi</h3>
+                            <p>Price: ₹30/piece</p>
+                            <button onclick="addToCart('Kiwi', 30)">Add to Cart</button>
+                        </div>
+                        <div class="product fruits hidden">
+                            <img src="https://cdn.britannica.com/99/143599-050-C3289491/Watermelon.jpg" alt="Watermelon">
+                            <h3>Watermelon</h3>
+                            <p>Price: ₹50/piece</p>
+                            <button onclick="addToCart('Watermelon', 50)">Add to Cart</button>
+                        </div>
+                        <div class="product fruits hidden">
+                            <img src="https://www.debriar.co.uk/uploads/images/zoom/blueberries_1.jpg" alt="Blueberries">
+                            <h3>Blueberries</h3>
+                            <p>Price: ₹200/box</p>
+                            <button onclick="addToCart('Blueberries', 200)">Add to Cart</button>
+                            </div>
+                </section>
+                          
+        <section id="cart">
+            <h2>Shopping Cart</h2>
+            <ul id="cart-items"></ul>
+            <p id="total-price">Total: ₹0</p>
+            <button style="background-color: #4CAF50; color: white; margin-top: 1em;" onclick="showPaymentDetails()">Buy Now</button>
+        </section>
+
+        <section id="payment-details" class="hidden">
+            <h2>Payment Details</h2>
+            <h3>Cart Summary</h3>
+            <ul id="summary-items"></ul>
+            <p id="final-total" style="font-weight: bold;">Total Amount: ₹0</p>
+
+            <form id="payment-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" class="payment-input" placeholder="Enter your full name" required>
+
+                <label for="address">Address:</label>
+                <input type="text" id="address" class="payment-input" placeholder="Enter your address" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" class="payment-input" placeholder="Enter your email" required>
+
+                <label for="payment-method">Payment Method:</label>
+                <select id="payment-method" class="payment-input" onchange="togglePaymentInputs()" required>
+                    <option value="credit-card">Credit/Debit Card</option>
+                    <option value="upi">UPI</option>
+                    <option value="net-banking">Net Banking</option>
+                    <option value="cash-on-delivery">Cash on Delivery</option>
+                </select>
+
+                <div id="credit-card" class="hidden">
+                    <label for="card-number">Card Number:</label>
+                    <input type="text" id="card-number" class="payment-input" placeholder="1234 5678 9012 3456">
+                    
+                    <label for="expiry-date">Expiry Date:</label>
+                    <input type="text" id="expiry-date" class="payment-input" placeholder="MM/YY">
+
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" class="payment-input" placeholder="123">
+                </div>
+
+                <div id="upi" class="hidden">
+                    <label for="upi-id">UPI ID:</label>
+                    <input type="text" id="upi-id" class="payment-input" placeholder="example@upi">
+                </div>
+
+                <div id="net-banking" class="hidden">
+                    <label for="bank-name">Bank Name:</label>
+                    <input type="text" id="bank-name" class="payment-input" placeholder="Enter your bank name">
+                </div>
+
+                <button type="submit" style="background-color: green; color: white; margin-top: 1em;">Confirm Payment</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 ORGANIC OASIS. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let cart = [];
+        let totalPrice = 0;
+
+        function addToCart(product, price) {
+            cart.push({ product, price });
+            totalPrice += price;
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById("cart-items");
+            cartItems.innerHTML = "";
+            cart.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = `${item.product} - ₹${item.price}`;
+                cartItems.appendChild(li);
+            });
+            document.getElementById("total-price").textContent = `Total: ₹${totalPrice}`;
+        }
+
+        function showCategory(category) {
+            document.querySelectorAll(".product").forEach(product => {
+                product.classList.toggle("hidden", !product.classList.contains(category));
+            });
+        }
+
+        function showPaymentDetails() {
+            document.getElementById("payment-details").classList.remove("hidden");
+            const summaryItems = document.getElementById("summary-items");
+            summaryItems.innerHTML = cart.map(item => `<li>${item.product} - ₹${item.price}</li>`).join("");
+            document.getElementById("final-total").textContent = `Total Amount: ₹${totalPrice}`;
+        }
+
+        function togglePaymentInputs() {
+            const paymentMethod = document.getElementById("payment-method").value;
+            document.getElementById("credit-card").classList.toggle("hidden", paymentMethod !== "credit-card");
+            document.getElementById("upi").classList.toggle("hidden", paymentMethod !== "upi");
+            document.getElementById("net-banking").classList.toggle("hidden", paymentMethod !== "net-banking");
+        }
+
+        document.getElementById("payment-form").addEventListener("submit", (e) => {
+            e.preventDefault();
+            alert("Thank you for your purchase!");
+        });
+    </script>
+</body>
+</html>
+
+       
